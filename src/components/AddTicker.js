@@ -6,15 +6,18 @@ class AddTicker extends Component {
 			<div>
 				<form>
 					<label>
+						Ticker:
 						<input type="text" value="APPL" />
 					</label>
 					<label>
+						Weight:
 						<input type="number" value="100%" />
 					</label>
 					<label>
+						Target Weight:
 						<input type="number" value="5%" />
 					</label>
-					<button type="submit">Set</button>
+					<button type="submit">Add</button>
 				</form>
 			</div>
 		);
