@@ -1,10 +1,6 @@
 import React, {Component} from "react";
-import Chart from "./components/Chart";
-import AddTicker from "./components/AddTicker";
+
 import Ticker from "./components/Ticker";
-import Output from "./containers/OutputContainer";
-import Increment from "./containers/IncrementContainer";
-import Decrement from "./containers/DecrementContainer";
 
 const finnhub = require("finnhub");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
@@ -33,19 +29,21 @@ class Portfolios extends Component {
 		return (
 			<div>
 				<h1>Investfolio</h1>
-				<AddTicker />
 				<ul>
 					<li>
-						<Ticker />
-						<Output />
-						<Increment />
-						<Decrement />
+						<Ticker Price={this.state.stocks[0]} />
 					</li>
 					<li>
 						<Ticker />
 					</li>
 				</ul>
-				<Chart />
+				<form>
+					<label>
+						Ticker:
+						<input type="text" value="APPL" />
+					</label>
+					<button type="submit">Add</button>
+				</form>
 			</div>
 		);
 	}

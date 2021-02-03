@@ -1,6 +1,8 @@
 import React from "react";
 import {Pie} from "react-chartjs-2";
 
+const hex = "#" + Math.floor(Math.random() * 16777215).toString(16); // random color
+
 const option = {
 	tooltips: {
 		callbacks: {
@@ -27,8 +29,7 @@ class Chart extends React.Component {
 			datasets: [
 				{
 					label: "Portfolios",
-					backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
-					hoverBackgroundColor: ["#501800", "#4B5000", "#175000", "#003350", "#35014F"],
+					backgroundColor: ["#a8e0ff", "#8ee3f5", "#70cad1", "#3e517a", "#b08ea2"],
 					data: [20, 20, 10, 25, 25],
 				},
 			],
