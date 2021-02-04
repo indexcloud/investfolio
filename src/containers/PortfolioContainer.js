@@ -1,4 +1,4 @@
-import Output from "../components/output";
+import Portfolio from "../components/portfolio";
 import {connect} from "react-redux";
 
 function mapStateToProps(state) {
@@ -7,4 +7,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(Output);
+export default connect(mapStateToProps)(Portfolio);

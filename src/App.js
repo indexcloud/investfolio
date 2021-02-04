@@ -1,6 +1,6 @@
 import "./App.css";
 import Search from "./Search";
-import Portfolios from "./components/Portfolios";
+import Portfolios from "./Portfolios";
 import Chart from "./Chart";
 
 import {Provider} from "react-redux";

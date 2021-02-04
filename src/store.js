@@ -6,11 +6,12 @@ const defaultState = {
 		{
 			symbol: "AAPL",
 			shares: 1,
-			unitCost: 2,
 			currentWeight: 3,
-			targetWeight: 4,
-			currentDeviation: 5,
-			targetDeviation: 6,
+		},
+		{
+			symbol: "TSLA",
+			shares: 2,
+			currentWeight: 3,
 		},
 	],
 };
