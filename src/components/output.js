@@ -1,8 +1,8 @@
 import React from "react";
 
 const Output = props => (
-	<div>
-		<h3>Quantity: {props.amount}</h3>
+	<div style={{display: "flex", justifyContent: "space-around"}}>
+		<div>{props.stocks.map(stock => stock.symbol)}</div>
 	</div>
 );
 

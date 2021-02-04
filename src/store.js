@@ -2,18 +2,17 @@ import {createStore} from "redux";
 import {counter} from "./reducers";
 
 const defaultState = {
-	// stocks: [
-	// 	{
-	// 		ticker: "",
-	// 		quantity: 0,
-	// 		unitCost: 0,
-	// 		currentWeight: 0,
-	// 		targetWeight: 0,
-	// 		currentDeviation: 0,
-	// 		targetDeviation: 0,
-	// 	},
-	// ],
-	count: 0,
+	stocks: [
+		{
+			symbol: "AAPL",
+			shares: 1,
+			unitCost: 2,
+			currentWeight: 3,
+			targetWeight: 4,
+			currentDeviation: 5,
+			targetDeviation: 6,
+		},
+	],
 };
 
 export const store = createStore(counter, defaultState);

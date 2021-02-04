@@ -3,8 +3,7 @@ import {connect} from "react-redux";
 
 function mapStateToProps(state) {
 	return {
-		// propName seen by React : value-in-state
-		amount: state.count,
+		stocks: state.stocks,
 	};
 }
 
