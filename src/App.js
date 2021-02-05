@@ -1,7 +1,7 @@
 import "./App.css";
-import Search from "./Search";
-import Portfolios from "./Portfolios";
-import Chart from "./Chart";
+import Search from "./containers/searchContainer";
+import Portfolio from "./containers/portfolioContainer";
+import Chart from "./containers/chartContainer";
 
 import {Provider} from "react-redux";
 import {store} from "./store";
@@ -13,7 +13,7 @@ function App() {
 				<header className="App-header">
 					<h1>Investfolio</h1>
 					<Search />
-					<Portfolios />
+					<Portfolio />
 				</header>
 				<div className="App-chart">
 					<Chart />
