@@ -1,5 +1,5 @@
 import {createStore} from "redux";
-import {counter} from "./reducers";
+import {rootReducer} from "./reducers";
 
 const defaultState = {
 	stocks: [
@@ -18,4 +18,4 @@ const defaultState = {
 	],
 };
 
-export const store = createStore(counter, defaultState);
+export const store = createStore(rootReducer, defaultState);

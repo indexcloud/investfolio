@@ -1,19 +1,19 @@
 import React from "react";
-import finnhubClient from "../apis/finnhubClient";
+import "../css/search.css";
+// import finnhubClient from "../apis/finnhubClient";
 
 class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentPrice: 0,
+			symbol: "",
+			shares: "",
+			targetWeight: "",
 		};
 	}
 
-	getStocks() {
-		finnhubClient.quote("TSLA", (error, data, response) => {
-			console.log("Hello");
-			this.setState({currentPrice: data.c});
-		});
+	postStock() {
+		this.props.handleClick(this.state.symbol, this.state.shares, this.state.targetWeight);
 	}
 
 	// componentDidMount() {
@@ -25,23 +25,35 @@ class Search extends React.Component {
 
 	render() {
 		return (
-			<form>
+			<div>
 				<label>
-					Ticker:
-					<input type="text" />
+					Symbol:
+					<input
+						type="text"
+						value={this.state.symbol}
+						onChange={event => this.setState({symbol: event.target.value})}
+					/>
 				</label>
 				<label>
 					Shares:
-					<input type="number" />
+					<input
+						type="number"
+						value={this.state.shares}
+						onChange={event => this.setState({shares: event.target.value})}
+					/>
 				</label>
 				<label>
 					Target Weight:
-					<input type="number" />
+					<input
+						type="number"
+						value={this.state.targetWeight}
+						onChange={event => this.setState({targetWeight: event.target.value})}
+					/>
 				</label>
-				<button type="submit" onClick={() => this.getStocks()}>
+				<button type="submit" onClick={this.postStock}>
 					Add
 				</button>
-			</form>
+			</div>
 		);
 	}
 }

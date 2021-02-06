@@ -1,7 +1,8 @@
 export const ADD_STOCK = "ADD_STOCK";
-export const DEL_STOCK = "DEL_STOCK";
-export const INCREMENT = "increment";
-export const DECREMENT = "decrement";
+export const UPDATE_STOCK = "UPDATE_STOCK";
+export const DELETE_STOCK = "DELETE_STOCK";
+export const SHARES_INCREMENT = "SHARES_INCREMENT";
+export const SHARES_DECREMENT = "SHARES_DECREMENT";
 
 export function addStock(symbol, shares, targetWeight) {
 	return {
@@ -14,18 +15,40 @@ export function addStock(symbol, shares, targetWeight) {
 	};
 }
 
-export function delStock(symbol) {
-	return {};
-}
-
-export function sharesIncrement() {
+export function updateStock(symbol, shares, targetWeight) {
 	return {
-		type: INCREMENT,
+		type: UPDATE_STOCK,
+		payload: {
+			symbol,
+			shares,
+			targetWeight,
+		},
 	};
 }
 
-export function sharesDecrement() {
+export function deleteStock(symbol) {
 	return {
-		type: DECREMENT,
+		type: DELETE_STOCK,
+		payload: {
+			symbol,
+		},
+	};
+}
+
+export function sharesIncrement(index) {
+	return {
+		type: SHARES_INCREMENT,
+		payload: {
+			index,
+		},
+	};
+}
+
+export function sharesDecrement(index) {
+	return {
+		type: SHARES_DECREMENT,
+		payload: {
+			index,
+		},
 	};
 }

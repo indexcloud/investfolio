@@ -5,8 +5,8 @@ import {sharesIncrement} from "../actions";
 
 function mapDispatchToProps(dispatch) {
 	return {
-		handleClick: () => {
-			dispatch(sharesIncrement());
+		handleClick: index => {
+			dispatch(sharesIncrement(index));
 		},
 	};
 }

@@ -1,45 +1,48 @@
 import React from "react";
 import "../css/portfolio.css";
 
-import Increment from "../containers/incrementContainer";
-import Decrement from "../containers/decrementContainer";
+// import Increment from "../containers/incrementContainer";
+// import Decrement from "../containers/decrementContainer";
+import Increment from "../components/increment";
+import Decrement from "../components/decrement";
 
 import finnhubClient from "../apis/finnhubClient";
 
-const symbol = "AAPL";
+// const symbol = "AAPL";
 
 class Portfolio extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			stocks: this.props.stocks,
-			currentPrice: 0,
-			currency: "$",
+			currentPrice: [],
 		};
 	}
 
 	componentDidMount() {
 		//Quote
-		finnhubClient.quote(symbol, (error, data, response) => {
-			this.setState({currentPrice: data.c});
-		});
+		this.props.stocks.map(stock =>
+			finnhubClient.quote(stock.symbol, (error, data, response) => {
+				this.setState({currentPrice: [...this.state.currentPrice, data.c]});
+			})
+		);
 	}
 
 	render() {
 		let tableDataDOM = "";
 
-		// @dom: show all values in the table
+		// @dom: show all values in the table. Still need to fix currentWeight
 		tableDataDOM = this.state.stocks.map((stock, index) => {
 			return (
 				<tr key={index}>
 					<th scope="row">{stock.symbol}</th>
 					<td style={{display: "flex", justifyContent: "space-between"}}>
-						<Decrement />
+						<Decrement index={index} />
 						{stock.shares}
-						<Increment />
+						<Increment index={index} />
 					</td>
-					<td>${this.state.currentPrice}</td>
-					<td>${this.state.currentPrice * stock.shares}</td>
+					<td>${this.state.currentPrice[index]}</td>
+					<td>${this.state.currentPrice[index] * stock.shares}</td>
 					<td>{stock.currentWeight}%</td>
 					<td>{stock.targetWeight}%</td>
 				</tr>
