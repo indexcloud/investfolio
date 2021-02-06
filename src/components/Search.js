@@ -5,6 +5,7 @@ import "../css/Search.css";
 class Search extends React.Component {
 	constructor(props) {
 		super(props);
+		this.postStock = this.postStock.bind(this);
 		this.state = {
 			symbol: "",
 			shares: "",
@@ -13,15 +14,8 @@ class Search extends React.Component {
 	}
 
 	postStock() {
-		this.props.handleClick(this.state.symbol, this.state.shares, this.state.targetWeight);
+		this.props.stockClick(this.state.symbol, this.state.shares, this.state.targetWeight);
 	}
-
-	// componentDidMount() {
-	// 	//Quote
-	// 	finnhubClient.quote(symbol, (error, data, response) => {
-	// 		this.setState({currentPrice: data.c});
-	// 	});
-	// }
 
 	render() {
 		return (

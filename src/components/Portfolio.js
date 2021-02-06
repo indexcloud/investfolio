@@ -7,8 +7,7 @@ import Increment from "./Increment";
 import Decrement from "./Decrement";
 
 import finnhubClient from "../apis/finnhubClient";
-
-// const symbol = "AAPL";
+// import {updateStock} from "../actions";
 
 class Portfolio extends React.Component {
 	constructor(props) {
@@ -16,7 +15,22 @@ class Portfolio extends React.Component {
 		this.state = {
 			stocks: this.props.stocks,
 			currentPrice: [],
+			weight: [], // calculating current weight and save in here
 		};
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.stocks !== this.props.stocks) {
+			const updatedCurrentPrice = this.props.stocks.map(stock =>
+				finnhubClient.quote(stock.symbol, (error, data, response) => data.c)
+			);
+			this.setState({stocks: this.props.stocks, currentPrice: updatedCurrentPrice});
+			// this.props.stocks.map(stock =>
+			// 	finnhubClient.quote(stock.symbol, (error, data, response) => {
+			// 		this.setState({currentPrice: [...this.state.currentPrice, data.c]});
+			// 	})
+			// );
+		}
 	}
 
 	componentDidMount() {

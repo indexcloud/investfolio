@@ -5,6 +5,7 @@ export const SHARES_INCREMENT = "SHARES_INCREMENT";
 export const SHARES_DECREMENT = "SHARES_DECREMENT";
 
 export function addStock(symbol, shares, targetWeight) {
+	console.log(symbol, shares, targetWeight);
 	return {
 		type: ADD_STOCK,
 		payload: {

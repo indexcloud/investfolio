@@ -4,6 +4,7 @@ import {Pie} from "react-chartjs-2";
 class Chart extends React.Component {
 	constructor(props) {
 		super(props);
+		// this.updateStock = this.updateStock.bind(this);
 		this.state = {
 			labels: this.props.stocks.map(stock => stock.symbol),
 			datasets: [
@@ -12,11 +13,26 @@ class Chart extends React.Component {
 					backgroundColor: this.props.stocks.map(
 						() => "#" + Math.floor(Math.random() * 16777215).toString(16)
 					),
-					data: this.props.stocks.map(stock => stock.currentWeight),
+					data: this.props.stocks.map(stock => stock.targetWeight), // change to currentWeight from Portfolio
 				},
 			],
 		};
 	}
+
+	// componentDidUpdate(prevProps) {
+	// 	if (prevProps.stocks !== this.props.stocks) {
+	// 		this.updateStock();
+	// 		// this.props.stocks.map(stock =>
+	// 		// 	finnhubClient.quote(stock.symbol, (error, data, response) => {
+	// 		// 		this.setState({currentPrice: [...this.state.currentPrice, data.c]});
+	// 		// 	})
+	// 		// );
+	// 	}
+	// }
+
+	// updateStock = () => {
+	// 	this.setState({stocks: this.props.stocks});
+	// };
 
 	render() {
 		const option = {
