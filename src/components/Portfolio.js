@@ -1,10 +1,10 @@
 import React from "react";
 import "../css/Portfolio.css";
 
-// import Increment from "../containers/incrementContainer";
-// import Decrement from "../containers/decrementContainer";
-import Increment from "./Increment";
-import Decrement from "./Decrement";
+import Increment from "../containers/IncrementContainer";
+import Decrement from "../containers/DecrementContainer";
+// import Increment from "./Increment";
+// import Decrement from "./Decrement";
 
 import finnhubClient from "../apis/finnhubClient";
 // import {updateStock} from "../actions";
@@ -21,15 +21,11 @@ class Portfolio extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.stocks !== this.props.stocks) {
-			const updatedCurrentPrice = this.props.stocks.map(stock =>
-				finnhubClient.quote(stock.symbol, (error, data, response) => data.c)
-			);
-			this.setState({stocks: this.props.stocks, currentPrice: updatedCurrentPrice});
-			// this.props.stocks.map(stock =>
-			// 	finnhubClient.quote(stock.symbol, (error, data, response) => {
-			// 		this.setState({currentPrice: [...this.state.currentPrice, data.c]});
-			// 	})
+			// const updatedCurrentPrice = this.props.stocks.map(stock =>
+			// 	finnhubClient.quote(stock.symbol, (error, data, response) => data.c)
 			// );
+			// this.setState({stocks: this.props.stocks, currentPrice: updatedCurrentPrice});
+			this.setState({stocks: this.props.stocks});
 		}
 	}
 
