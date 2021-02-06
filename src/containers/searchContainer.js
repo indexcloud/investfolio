@@ -16,6 +16,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(addStock(symbol, shares, targetWeight));
 		},
 	};
+	// SearchContainer
 }
 
 export default connect(null, mapDispatchToProps)(Search);
