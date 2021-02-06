@@ -12,6 +12,7 @@ class Portfolio extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			stocks: this.props.stocks,
 			currentPrice: 0,
 			currency: "$",
 		};
@@ -28,18 +29,19 @@ class Portfolio extends React.Component {
 		let tableDataDOM = "";
 
 		// @dom: show all values in the table
-		tableDataDOM = this.props.stocks.map((stock, index) => {
+		tableDataDOM = this.state.stocks.map((stock, index) => {
 			return (
 				<tr key={index}>
 					<th scope="row">{stock.symbol}</th>
-					<td>
+					<td style={{display: "flex", justifyContent: "space-between"}}>
+						<Decrement />
 						{stock.shares}
 						<Increment />
-						<Decrement />
 					</td>
 					<td>${this.state.currentPrice}</td>
 					<td>${this.state.currentPrice * stock.shares}</td>
-					<td>{stock.currentWeight}</td>
+					<td>{stock.currentWeight}%</td>
+					<td>{stock.targetWeight}%</td>
 				</tr>
 			);
 		});
@@ -55,6 +57,7 @@ class Portfolio extends React.Component {
 								<th scope="col">Current Price</th>
 								<th scope="col">Total Value</th>
 								<th scope="col">Weight</th>
+								<th scope="col">Target Weight</th>
 							</tr>
 						</thead>
 						<tbody>{tableDataDOM}</tbody>

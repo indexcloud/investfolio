@@ -1,24 +1,30 @@
 export const ADD_STOCK = "ADD_STOCK";
+export const DEL_STOCK = "DEL_STOCK";
 export const INCREMENT = "increment";
 export const DECREMENT = "decrement";
 
-export function addStock(symbol, currentPrice) {
+export function addStock(symbol, shares, targetWeight) {
 	return {
 		type: ADD_STOCK,
 		payload: {
 			symbol,
-			currentPrice,
+			shares,
+			targetWeight,
 		},
 	};
 }
 
-export function actionIncrement() {
+export function delStock(symbol) {
+	return {};
+}
+
+export function sharesIncrement() {
 	return {
 		type: INCREMENT,
 	};
 }
 
-export function actionDecrement() {
+export function sharesDecrement() {
 	return {
 		type: DECREMENT,
 	};

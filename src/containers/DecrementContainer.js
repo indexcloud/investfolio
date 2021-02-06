@@ -1,12 +1,12 @@
 import Decrement from "../components/decrement";
 import {connect} from "react-redux";
 
-import {actionDecrement} from "../actions";
+import {sharesDecrement} from "../actions";
 
 function mapDispatchToProps(dispatch) {
 	return {
 		handleClick: () => {
-			dispatch(actionDecrement());
+			dispatch(sharesDecrement());
 		},
 	};
 }
