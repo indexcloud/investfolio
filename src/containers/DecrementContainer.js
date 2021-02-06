@@ -1,4 +1,4 @@
-import Decrement from "../components/decrement";
+import Decrement from "../components/Decrement";
 import {connect} from "react-redux";
 
 import {sharesDecrement} from "../actions";

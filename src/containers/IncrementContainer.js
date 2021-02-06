@@ -1,4 +1,4 @@
-import Increment from "../components/increment";
+import Increment from "../components/Increment";
 import {connect} from "react-redux";
 
 import {sharesIncrement} from "../actions";

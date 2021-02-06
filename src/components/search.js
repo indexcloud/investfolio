@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/search.css";
+import "../css/Search.css";
 // import finnhubClient from "../apis/finnhubClient";
 
 class Search extends React.Component {

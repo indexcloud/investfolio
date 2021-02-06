@@ -1,10 +1,10 @@
 import React from "react";
-import "../css/portfolio.css";
+import "../css/Portfolio.css";
 
 // import Increment from "../containers/incrementContainer";
 // import Decrement from "../containers/decrementContainer";
-import Increment from "../components/increment";
-import Decrement from "../components/decrement";
+import Increment from "./Increment";
+import Decrement from "./Decrement";
 
 import finnhubClient from "../apis/finnhubClient";
 

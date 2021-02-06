@@ -1,4 +1,4 @@
-import Search from "../components/search";
+import Search from "../components/Search";
 import {connect} from "react-redux";
 
 import {addStock} from "../actions";

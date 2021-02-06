@@ -1,7 +1,7 @@
 import "./App.css";
-import Search from "./containers/searchContainer";
-import Portfolio from "./containers/portfolioContainer";
-import Chart from "./containers/chartContainer";
+import Search from "./containers/SearchContainer";
+import Portfolio from "./containers/PortfolioContainer";
+import Chart from "./containers/ChartContainer";
 
 import {Provider} from "react-redux";
 import {store} from "./store";
