@@ -25,12 +25,16 @@ class Portfolio extends React.Component {
 			// 	finnhubClient.quote(stock.symbol, (error, data, response) => data.c)
 			// );
 			// this.setState({stocks: this.props.stocks, currentPrice: updatedCurrentPrice});
+			this.getQuote();
 			this.setState({stocks: this.props.stocks});
 		}
 	}
 
 	componentDidMount() {
-		//Quote
+		this.getQuote();
+	}
+
+	getQuote() {
 		this.props.stocks.map(stock =>
 			finnhubClient.quote(stock.symbol, (error, data, response) => {
 				this.setState({currentPrice: [...this.state.currentPrice, data.c]});
@@ -46,13 +50,13 @@ class Portfolio extends React.Component {
 			return (
 				<tr key={index}>
 					<th scope="row">{stock.symbol}</th>
-					<td style={{display: "flex", justifyContent: "space-between"}}>
-						<Decrement index={index} />
-						{stock.shares}
-						<Increment index={index} />
+					<td style={{display: "flex", justifyContent: "space-around", margin: "0 15px"}}>
+						<Decrement id={index} />
+						<div style={{padding: "0 15px"}}>{stock.shares}</div>
+						<Increment id={index} />
 					</td>
 					<td>${this.state.currentPrice[index]}</td>
-					<td>${this.state.currentPrice[index] * stock.shares}</td>
+					<td>${(this.state.currentPrice[index] * stock.shares).toFixed(2)}</td>
 					<td>{stock.currentWeight}%</td>
 					<td>{stock.targetWeight}%</td>
 				</tr>

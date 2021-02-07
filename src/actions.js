@@ -36,20 +36,20 @@ export function deleteStock(symbol) {
 	};
 }
 
-export function sharesIncrement(index) {
+export function sharesIncrement(id) {
 	return {
 		type: SHARES_INCREMENT,
 		payload: {
-			index,
+			id,
 		},
 	};
 }
 
-export function sharesDecrement(index) {
+export function sharesDecrement(id) {
 	return {
 		type: SHARES_DECREMENT,
 		payload: {
-			index,
+			id,
 		},
 	};
 }

@@ -12,7 +12,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		stockClick: (symbol, shares, targetWeight) => {
-			console.log("Good");
 			dispatch(addStock(symbol, shares, targetWeight));
 		},
 	};

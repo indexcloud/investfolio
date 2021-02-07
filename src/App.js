@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import Search from "./containers/SearchContainer";
 import Portfolio from "./containers/PortfolioContainer";
 import Chart from "./containers/ChartContainer";

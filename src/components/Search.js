@@ -8,8 +8,8 @@ class Search extends React.Component {
 		this.postStock = this.postStock.bind(this);
 		this.state = {
 			symbol: "",
-			shares: "",
-			targetWeight: "",
+			shares: 0,
+			targetWeight: 0,
 		};
 	}
 
@@ -33,7 +33,7 @@ class Search extends React.Component {
 					<input
 						type="number"
 						value={this.state.shares}
-						onChange={event => this.setState({shares: event.target.value})}
+						onChange={event => this.setState({shares: parseInt(event.target.value)})}
 					/>
 				</label>
 				<label>

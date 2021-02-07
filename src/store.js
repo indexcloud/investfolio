@@ -1,5 +1,6 @@
 import {createStore} from "redux";
 import {rootReducer} from "./reducers";
+// import {stocks} from "./reducers";
 
 const defaultState = {
 	stocks: [
