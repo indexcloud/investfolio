@@ -22,12 +22,20 @@ class Search extends React.Component {
 	// }
 
 	postStock = async () => {
+		const existingStocks = this.props.stocks.map(stock => stock.symbol);
+
+		if (existingStocks.includes(this.state.symbol)) {
+			alert("Stock already exists");
+			return;
+		}
+
 		const quote = await stock.get("/quote", {
 			params: {
 				symbol: this.state.symbol,
 				token: "bqhq9i7rh5rbubolrqd0", // c0bolbf48v6rgo5eb28g
 			},
 		});
+
 		this.setState({currentPrice: quote.data.c});
 		this.props.stockClick(this.state.symbol, this.state.shares, this.state.currentPrice, this.state.targetWeight);
 	};
