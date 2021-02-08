@@ -27,7 +27,7 @@ class Chart extends React.Component {
 					backgroundColor: this.state.stocks.map(
 						() => "#" + Math.floor(Math.random() * 16777215).toString(16)
 					),
-					data: this.state.stocks.map(stock => stock.targetWeight), // change to currentWeight from Portfolio
+					data: this.state.stocks.map(stock => stock.shares * stock.currentPrice),
 				},
 			],
 		};
@@ -39,8 +39,8 @@ class Chart extends React.Component {
 						const dataset = data.datasets[tooltipItem.datasetIndex];
 						const meta = dataset._meta[Object.keys(dataset._meta)[0]];
 						const total = meta.total;
-						const currentValue = dataset.data[tooltipItem.index];
-						const percentage = parseFloat(((currentValue / total) * 100).toFixed(1));
+						const currentValue = dataset.data[tooltipItem.index].toFixed(2);
+						const percentage = ((currentValue / total) * 100).toFixed(2);
 						return currentValue + " (" + percentage + "%)";
 					},
 					title: function (tooltipItem, data) {

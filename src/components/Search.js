@@ -8,9 +8,9 @@ class Search extends React.Component {
 		this.postStock = this.postStock.bind(this);
 		this.state = {
 			symbol: "",
-			shares: "",
-			currentPrice: "",
-			targetWeight: "",
+			shares: 0,
+			currentPrice: 0,
+			targetWeight: 0,
 		};
 	}
 
