@@ -6,35 +6,32 @@ class Chart extends React.Component {
 		super(props);
 		// this.updateStock = this.updateStock.bind(this);
 		this.state = {
-			labels: this.props.stocks.map(stock => stock.symbol),
-			datasets: [
-				{
-					label: "Portfolios",
-					backgroundColor: this.props.stocks.map(
-						() => "#" + Math.floor(Math.random() * 16777215).toString(16)
-					),
-					data: this.props.stocks.map(stock => stock.targetWeight), // change to currentWeight from Portfolio
-				},
-			],
+			stocks: this.props.stocks,
 		};
 	}
 
-	// componentDidUpdate(prevProps) {
-	// 	if (prevProps.stocks !== this.props.stocks) {
-	// 		this.updateStock();
-	// 		// this.props.stocks.map(stock =>
-	// 		// 	finnhubClient.quote(stock.symbol, (error, data, response) => {
-	// 		// 		this.setState({currentPrice: [...this.state.currentPrice, data.c]});
-	// 		// 	})
-	// 		// );
-	// 	}
-	// }
-
-	// updateStock = () => {
-	// 	this.setState({stocks: this.props.stocks});
-	// };
+	componentDidUpdate(prevProps) {
+		if (prevProps.stocks !== this.props.stocks) {
+			this.setState({
+				stocks: this.props.stocks,
+			});
+		}
+	}
 
 	render() {
+		const datas = {
+			labels: this.state.stocks.map(stock => stock.symbol),
+			datasets: [
+				{
+					label: "Portfolios",
+					backgroundColor: this.state.stocks.map(
+						() => "#" + Math.floor(Math.random() * 16777215).toString(16)
+					),
+					data: this.state.stocks.map(stock => stock.targetWeight), // change to currentWeight from Portfolio
+				},
+			],
+		};
+
 		const option = {
 			tooltips: {
 				callbacks: {
@@ -58,13 +55,12 @@ class Chart extends React.Component {
 			},
 			legend: {
 				display: true,
-				// position: "right",
 			},
 		};
 
 		return (
 			<div>
-				<Pie data={this.state} options={option} />
+				<Pie data={datas} options={option} />
 			</div>
 		);
 	}

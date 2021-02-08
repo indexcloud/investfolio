@@ -3,18 +3,12 @@ import {connect} from "react-redux";
 
 import {addStock} from "../actions";
 
-function mapStateToProps(state) {
-	return {
-		stocks: state.stocks,
-	};
-}
-
 function mapDispatchToProps(dispatch) {
 	return {
-		stockClick: (symbol, shares, targetWeight) => {
-			dispatch(addStock(symbol, shares, targetWeight));
+		stockClick: (symbol, shares, currentPrice, targetWeight) => {
+			dispatch(addStock(symbol, shares, currentPrice, targetWeight));
 		},
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);

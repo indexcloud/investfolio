@@ -3,49 +3,32 @@ import "../css/Portfolio.css";
 
 import Increment from "../containers/IncrementContainer";
 import Decrement from "../containers/DecrementContainer";
-// import Increment from "./Increment";
-// import Decrement from "./Decrement";
 
-import finnhubClient from "../apis/finnhubClient";
 // import {updateStock} from "../actions";
 
 class Portfolio extends React.Component {
 	constructor(props) {
 		super(props);
+		// this.getQuote = this.getQuote.bind(this);
 		this.state = {
 			stocks: this.props.stocks,
-			currentPrice: [],
-			weight: [], // calculating current weight and save in here
+			totalWeight: [], // calculating current weight and save in here
 		};
 	}
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.stocks !== this.props.stocks) {
-			// const updatedCurrentPrice = this.props.stocks.map(stock =>
-			// 	finnhubClient.quote(stock.symbol, (error, data, response) => data.c)
-			// );
-			// this.setState({stocks: this.props.stocks, currentPrice: updatedCurrentPrice});
-			this.getQuote();
-			this.setState({stocks: this.props.stocks});
+			this.setState({
+				stocks: this.props.stocks,
+			});
 		}
-	}
-
-	componentDidMount() {
-		this.getQuote();
-	}
-
-	getQuote() {
-		this.props.stocks.map(stock =>
-			finnhubClient.quote(stock.symbol, (error, data, response) => {
-				this.setState({currentPrice: [...this.state.currentPrice, data.c]});
-			})
-		);
 	}
 
 	render() {
 		let tableDataDOM = "";
 
-		// @dom: show all values in the table. Still need to fix currentWeight
+		// const totalWeight =
+		// @dom: show all values in the table. Still need to fix currentWeight ?? Maybe map aip call to each iteration
 		tableDataDOM = this.state.stocks.map((stock, index) => {
 			return (
 				<tr key={index}>
@@ -55,8 +38,8 @@ class Portfolio extends React.Component {
 						<div style={{padding: "0 15px"}}>{stock.shares}</div>
 						<Increment id={index} />
 					</td>
-					<td>${this.state.currentPrice[index]}</td>
-					<td>${(this.state.currentPrice[index] * stock.shares).toFixed(2)}</td>
+					<td>${stock.currentPrice}</td>
+					<td>${(stock.currentPrice * stock.shares).toFixed(2)}</td>
 					<td>{stock.currentWeight}%</td>
 					<td>{stock.targetWeight}%</td>
 				</tr>
@@ -73,7 +56,7 @@ class Portfolio extends React.Component {
 								<th scope="col">Shares</th>
 								<th scope="col">Current Price</th>
 								<th scope="col">Total Value</th>
-								<th scope="col">Weight</th>
+								<th scope="col">Current Weight</th>
 								<th scope="col">Target Weight</th>
 							</tr>
 						</thead>

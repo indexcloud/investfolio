@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Search.css";
-// import finnhubClient from "../apis/finnhubClient";
+import stock from "../apis/stock";
 
 class Search extends React.Component {
 	constructor(props) {
@@ -8,14 +8,29 @@ class Search extends React.Component {
 		this.postStock = this.postStock.bind(this);
 		this.state = {
 			symbol: "",
-			shares: 0,
-			targetWeight: 0,
+			shares: "",
+			currentPrice: "",
+			targetWeight: "",
 		};
 	}
 
-	postStock() {
-		this.props.stockClick(this.state.symbol, this.state.shares, this.state.targetWeight);
-	}
+	// componentDidMount() {
+	// 	finnhubClient.quote(this.state.symbol, (error, data, response) => {
+	// 		console.log(data.c);
+	// 		this.setState({currentPrice: data.c});
+	// 	});
+	// }
+
+	postStock = async () => {
+		const quote = await stock.get("/quote", {
+			params: {
+				symbol: this.state.symbol,
+				token: "bqhq9i7rh5rbubolrqd0", // c0bolbf48v6rgo5eb28g
+			},
+		});
+		this.setState({currentPrice: quote.data.c});
+		this.props.stockClick(this.state.symbol, this.state.shares, this.state.currentPrice, this.state.targetWeight);
+	};
 
 	render() {
 		return (
@@ -41,7 +56,7 @@ class Search extends React.Component {
 					<input
 						type="number"
 						value={this.state.targetWeight}
-						onChange={event => this.setState({targetWeight: event.target.value})}
+						onChange={event => this.setState({targetWeight: parseInt(event.target.value)})}
 					/>
 				</label>
 				<button type="submit" onClick={this.postStock}>
