@@ -36,9 +36,6 @@
 	color: #d54f4f;
 }
 
-.no-data-message {
-	position: absolute;
-	top: 53%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.th-functions {
+	visibility: hidden;
 }

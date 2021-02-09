@@ -3,6 +3,7 @@ import "../css/Portfolio.css";
 
 import Increment from "../containers/IncrementContainer";
 import Decrement from "../containers/DecrementContainer";
+import Delete from "../containers/DeleteContainer";
 
 // import {updateStock} from "../actions";
 
@@ -32,6 +33,7 @@ class Portfolio extends React.Component {
 
 		tableDataDOM = this.state.stocks.map((stock, index) => {
 			const totalValue = stock.currentPrice * stock.shares;
+			const deviation = ((totalValue / totalWeight) * 100 - stock.targetWeight).toFixed(2);
 
 			return (
 				<tr key={index}>
@@ -44,8 +46,15 @@ class Portfolio extends React.Component {
 					<td>${stock.currentPrice}</td>
 					<td>${totalValue.toFixed(2)}</td>
 					<td>{((totalValue / totalWeight) * 100).toFixed(2)}%</td>
-					<td>{stock.targetWeight}%</td>
-					<td>{((totalValue / totalWeight) * 100 - stock.targetWeight).toFixed(2)}%</td>
+					<td style={{display: "flex", justifyContent: "space-around", margin: "0 15px"}}>
+						{/* <Decrement id={index} /> */}
+						<div style={{padding: "0 15px"}}>{stock.targetWeight}%</div>
+						{/* <Increment id={index} /> */}
+					</td>
+					<td className={deviation >= 0 ? "green-text" : "red-text"}>{deviation}%</td>
+					<td>
+						<Delete symbol={stock.symbol} />
+					</td>
 				</tr>
 			);
 		});
@@ -63,6 +72,9 @@ class Portfolio extends React.Component {
 								<th scope="col">Current Weight</th>
 								<th scope="col">Target Weight</th>
 								<th scope="col">Deviation</th>
+								<th scope="col" className="th-functions">
+									null
+								</th>
 							</tr>
 						</thead>
 						<tbody>{tableDataDOM}</tbody>

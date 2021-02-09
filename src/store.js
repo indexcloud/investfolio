@@ -7,13 +7,13 @@ const defaultState = {
 		// {
 		// 	symbol: "AAPL",
 		// 	shares: 1,
-		// 	currentValue: 50,
+		// 	currentPrice: 25,
 		// 	targetWeight: 25,
 		// },
 		// {
 		// 	symbol: "TSLA",
 		// 	shares: 2,
-		// 	currentValue: 50,
+		// 	currentPrice: 50,
 		// 	targetWeight: 50,
 		// },
 	],

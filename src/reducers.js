@@ -8,7 +8,9 @@ function stocks(state = [], action) {
 		case UPDATE_STOCK:
 			return state.stocks.map(stock => (stock.symbol !== action.payload.symbol ? stock : {...action.payload}));
 		case DELETE_STOCK:
-			return state.stocks.filter(stock => stock.symbol !== action.payload.symbol);
+			const deleteArray = [...state];
+			const newArray = deleteArray.filter(stock => stock.symbol !== action.payload.symbol);
+			return newArray;
 		case SHARES_INCREMENT:
 			const incrementArray = [...state];
 			incrementArray[action.payload.id].shares += 1;

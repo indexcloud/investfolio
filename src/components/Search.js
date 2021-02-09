@@ -48,7 +48,7 @@ class Search extends React.Component {
 					<input
 						type="text"
 						value={this.state.symbol}
-						onChange={event => this.setState({symbol: event.target.value})}
+						onChange={event => this.setState({symbol: event.target.value.toUpperCase()})}
 					/>
 				</label>
 				<label>
